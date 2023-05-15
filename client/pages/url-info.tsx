@@ -1,16 +1,14 @@
-import { useRouter } from "next/router";
+import { useSearchParams } from "next/navigation";
 import React from "react";
-
 import AppWrapper from "../components/AppWrapper";
 import Footer from "../components/Footer";
 import { H2, H4 } from "../components/Text";
 import { Col } from "../components/Layout";
-
 const UrlInfoPage = () => {
-  const { query } = useRouter();
+  const searchParams = useSearchParams();
   return (
     <AppWrapper>
-      {!query.target ? (
+      {!searchParams?.get("target") ? (
         <H2 my={4} light>
           404 | Link could not be found.
         </H2>
@@ -20,7 +18,7 @@ const UrlInfoPage = () => {
             <H2 my={3} light>
               Target:
             </H2>
-            <H4 bold>{query.target}</H4>
+            <H4 bold>{searchParams?.get("target")}</H4>
           </Col>
           <Footer />
         </>
@@ -28,5 +26,4 @@ const UrlInfoPage = () => {
     </AppWrapper>
   );
 };
-
 export default UrlInfoPage;
