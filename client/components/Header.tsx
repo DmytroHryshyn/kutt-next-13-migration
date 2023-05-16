@@ -1,7 +1,7 @@
 import { Flex } from "rebass/styled-components";
 import getConfig from "next/config";
 import React, { FC } from "react";
-import Router from "next/router";
+import { useRouter } from "next/navigation";
 import useMedia from "use-media";
 import Image from "next/image";
 
@@ -53,6 +53,8 @@ const Header: FC = () => {
   const { isAuthenticated } = useStoreState((s) => s.auth);
   const isMobile = useMedia({ maxWidth: 640 });
 
+  const router = useRouter();
+
   const login = !isAuthenticated && (
     <Li>
       <ALink
@@ -102,7 +104,7 @@ const Header: FC = () => {
             title="Homepage"
             onClick={(e) => {
               e.preventDefault();
-              if (window.location.pathname !== "/") Router.push("/");
+              if (window.location.pathname !== "/") router.push("/");
             }}
             forButton
             isNextLink

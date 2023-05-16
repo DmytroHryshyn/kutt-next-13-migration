@@ -1,5 +1,5 @@
 import React from "react";
-import Router from "next/router";
+import { useRouter } from 'next/navigation';
 
 import { DISALLOW_ANONYMOUS_LINKS } from "../consts";
 import NeedToLogin from "../components/NeedToLogin";
@@ -13,13 +13,14 @@ import { useStoreState } from "../store";
 
 const Homepage = () => {
   const isAuthenticated = useStoreState(s => s.auth.isAuthenticated);
+  const router = useRouter();
 
   if (
     !isAuthenticated &&
     DISALLOW_ANONYMOUS_LINKS &&
     typeof window !== "undefined"
   ) {
-    Router.push("/login");
+    router.push("/login");
     return null;
   }
 

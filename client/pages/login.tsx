@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Flex } from "rebass/styled-components";
 import emailValidator from "email-validator";
 import styled from "styled-components";
-import Router from "next/router";
+import { useRouter } from 'next/navigation';
 import axios from "axios";
 
 import { useStoreState, useStoreActions } from "../store";
@@ -40,10 +40,10 @@ const LoginPage = () => {
     email: string;
     password: string;
   }>(null, { withIds: true });
-
+  const router = useRouter();
   useEffect(() => {
-    if (isAuthenticated) Router.push("/");
-  }, [isAuthenticated]);
+    if (isAuthenticated) router.push("/");
+  }, [isAuthenticated, router]);
 
   function onSubmit(type: "login" | "signup") {
     return async (e) => {
@@ -70,7 +70,7 @@ const LoginPage = () => {
         setLoading((s) => ({ ...s, login: true }));
         try {
           await login(formState.values);
-          Router.push("/");
+          router.push("/");
         } catch (error) {
           setError(error.response.data.error);
         }

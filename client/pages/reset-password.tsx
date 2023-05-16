@@ -1,7 +1,7 @@
 import { useFormState } from "react-use-form-state";
 import React, { useEffect, useState } from "react";
 import { Flex } from "rebass/styled-components";
-import Router from "next/router";
+import { useRouter } from "next/navigation";
 import decode from "jwt-decode";
 import { NextPage } from "next";
 import cookie from "js-cookie";
@@ -30,19 +30,20 @@ const ResetPassword: NextPage<Props> = ({ token }) => {
   const [formState, { email, label }] = useFormState<{ email: string }>(null, {
     withIds: true
   });
+  const router = useRouter();
 
   useEffect(() => {
     if (auth.isAuthenticated) {
-      Router.push("/settings");
+      router.push("/settings");
     }
 
     if (token) {
       cookie.set("token", token, { expires: 7 });
       const decoded: TokenPayload = decode(token);
       addAuth(decoded);
-      Router.push("/settings");
+      router.push("/settings");
     }
-  }, [auth, token, addAuth]);
+  }, [auth, token, addAuth, router]);
 
   const onSubmit = async (e) => {
     e.preventDefault();

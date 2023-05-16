@@ -1,7 +1,7 @@
 import { useFormState } from "react-use-form-state";
 import React, { FC, useState } from "react";
 import getConfig from "next/config";
-import Router from "next/router";
+import { useRouter } from "next/navigation";
 import axios from "axios";
 
 import { getAxiosConfig } from "../../utils";
@@ -26,6 +26,7 @@ const SettingsDeleteAccount: FC = () => {
       withIds: true
     }
   );
+  const router = useRouter();
 
   const onSubmit = async e => {
     e.preventDefault();
@@ -43,7 +44,7 @@ const SettingsDeleteAccount: FC = () => {
         { password: formState.values.accpass },
         getAxiosConfig()
       );
-      Router.push("/logout");
+      router.push("/logout");
     } catch (error) {
       setMessage(error.response.data.error);
     }

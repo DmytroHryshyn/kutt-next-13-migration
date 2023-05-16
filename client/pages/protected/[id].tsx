@@ -2,7 +2,7 @@ import { useFormState } from "react-use-form-state";
 import { Flex } from "rebass/styled-components";
 import React, { useState } from "react";
 import { NextPage } from "next";
-import { useRouter } from "next/router";
+import { useSearchParams } from "next/navigation";
 import axios from "axios";
 
 import AppWrapper from "../../components/AppWrapper";
@@ -18,7 +18,7 @@ interface Props {
 }
 
 const ProtectedPage: NextPage<Props> = () => {
-  const router = useRouter();
+  const searchParams = useSearchParams();
   const [loading, setLoading] = useState(false);
   const [formState, { password }] = useFormState<{ password: string }>();
   const [error, setError] = useState<string>();
@@ -35,7 +35,7 @@ const ProtectedPage: NextPage<Props> = () => {
     setLoading(true);
     try {
       const { data } = await axios.post(
-        `${APIv2.Links}/${router.query.id}/protected`,
+        `${APIv2.Links}/${searchParams?.get('id')}/protected`,
         {
           password
         }
@@ -49,7 +49,7 @@ const ProtectedPage: NextPage<Props> = () => {
 
   return (
     <AppWrapper>
-      {!router.query.id ? (
+      {!searchParams?.get('id') ? (
         <H2 my={4} light>
           404 | Link could not be found.
         </H2>

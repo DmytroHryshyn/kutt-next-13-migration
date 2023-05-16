@@ -1,7 +1,7 @@
 import App, { AppContext } from "next/app";
 import { StoreProvider } from "easy-peasy";
 import getConfig from "next/config";
-import Router from "next/router";
+// import Router from "next/router";
 import decode from "jwt-decode";
 import cookie from "js-cookie";
 import Head from "next/head";
@@ -41,7 +41,10 @@ class MyApp extends App<any> {
   }
 
   componentDidMount() {
-    const { loading, auth } = this.store.dispatch;
+    const { 
+      // loading, 
+      auth 
+    } = this.store.dispatch;
     const token = cookie.get("token");
     const isVerifyEmailPage =
       typeof window !== "undefined" &&
@@ -53,11 +56,11 @@ class MyApp extends App<any> {
       });
     }
 
-    Router.events.on("routeChangeStart", () => loading.show());
-    Router.events.on("routeChangeComplete", () => {
-      loading.hide();
-    });
-    Router.events.on("routeChangeError", () => loading.hide());
+    // Router.events.on("routeChangeStart", () => loading.show());
+    // Router.events.on("routeChangeComplete", () => {
+    //   loading.hide();
+    // });
+    // Router.events.on("routeChangeError", () => loading.hide());
   }
 
   render() {
