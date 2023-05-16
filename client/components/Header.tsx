@@ -1,18 +1,15 @@
 import { Flex } from "rebass/styled-components";
-import getConfig from "next/config";
 import React, { FC } from "react";
 import { useRouter } from "next/navigation";
 import useMedia from "use-media";
 import Image from "next/image";
 
-import { DISALLOW_REGISTRATION } from "../consts";
+import { NEXT_PUBLIC_DISALLOW_REGISTRATION } from "../consts";
 import { useStoreState } from "../store";
 import styled from "styled-components";
 import { RowCenterV } from "./Layout";
 import { Button } from "./Button";
 import ALink from "./ALink";
-
-const { publicRuntimeConfig } = getConfig();
 
 const Li = styled(Flex).attrs({ ml: [12, 24, 32] })`
   a {
@@ -59,12 +56,12 @@ const Header: FC = () => {
     <Li>
       <ALink
         href="/login"
-        title={!DISALLOW_REGISTRATION ? "login / signup" : "login"}
+        title={!NEXT_PUBLIC_DISALLOW_REGISTRATION ? "login / signup" : "login"}
         forButton
         isNextLink
       >
         <Button height={[32, 40]}>
-          {!DISALLOW_REGISTRATION ? "Log in / Sign up" : "Log in"}
+          {!NEXT_PUBLIC_DISALLOW_REGISTRATION ? "Log in / Sign up" : "Log in"}
         </Button>
       </ALink>
     </Li>
@@ -115,7 +112,7 @@ const Header: FC = () => {
               width={18}
               height={24}
             />
-            {publicRuntimeConfig.SITE_NAME}
+            {process.env.NEXT_PUBLIC_SITE_NAME}
           </ALink>
         </LogoImage>
 

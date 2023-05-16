@@ -1,5 +1,4 @@
 import React, { FC, useEffect } from "react";
-import getConfig from "next/config";
 
 import showRecaptcha from "../helpers/recaptcha";
 import { useStoreState } from "../store";
@@ -7,8 +6,6 @@ import { ColCenter } from "./Layout";
 import ReCaptcha from "./ReCaptcha";
 import ALink from "./ALink";
 import Text from "./Text";
-
-const { publicRuntimeConfig } = getConfig();
 
 const Footer: FC = () => {
   const { isAuthenticated } = useStoreState((s) => s.auth);
@@ -46,11 +43,11 @@ const Footer: FC = () => {
         <ALink href="/report" title="Report abuse" isNextLink>
           Report Abuse
         </ALink>
-        {publicRuntimeConfig.CONTACT_EMAIL && (
+        {process.env.NEXT_PUBLIC_CONTACT_EMAIL && (
           <>
             {" | "}
             <ALink
-              href={`mailto:${publicRuntimeConfig.CONTACT_EMAIL}`}
+              href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL}`}
               title="Contact us"
             >
               Contact us

@@ -61,7 +61,7 @@ export const apikey = authenticate(
 );
 
 export const cooldown: Handler = async (req, res, next) => {
-  if (env.DISALLOW_ANONYMOUS_LINKS) return next();
+  if (env.NEXT_PUBLIC_DISALLOW_ANONYMOUS_LINKS) return next();
   const cooldownConfig = env.NON_USER_COOLDOWN;
   if (req.user || !cooldownConfig) return next();
 
@@ -83,7 +83,7 @@ export const cooldown: Handler = async (req, res, next) => {
 
 export const recaptcha: Handler = async (req, res, next) => {
   if (env.isDev || req.user) return next();
-  if (env.DISALLOW_ANONYMOUS_LINKS) return next();
+  if (env.NEXT_PUBLIC_DISALLOW_ANONYMOUS_LINKS) return next();
   if (!env.RECAPTCHA_SECRET_KEY) return next();
 
   const isReCaptchaValid = await axios({
@@ -221,7 +221,7 @@ export const resetPassword: Handler = async (req, res, next) => {
 };
 
 export const signupAccess: Handler = (req, res, next) => {
-  if (!env.DISALLOW_REGISTRATION) return next();
+  if (!env.NEXT_PUBLIC_DISALLOW_REGISTRATION) return next();
   return res.status(403).send({ message: "Registration is not allowed." });
 };
 

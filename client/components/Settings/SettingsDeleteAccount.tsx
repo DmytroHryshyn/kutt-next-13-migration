@@ -1,6 +1,5 @@
 import { useFormState } from "react-use-form-state";
 import React, { FC, useState } from "react";
-import getConfig from "next/config";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 
@@ -14,7 +13,6 @@ import { Button } from "../Button";
 import Icon from "../Icon";
 import Modal from "../Modal";
 
-const { publicRuntimeConfig } = getConfig();
 
 const SettingsDeleteAccount: FC = () => {
   const [message, setMessage] = useMessage(1500);
@@ -57,7 +55,7 @@ const SettingsDeleteAccount: FC = () => {
         Delete account
       </H2>
       <Text mb={4}>
-        Delete your account from {publicRuntimeConfig.SITE_NAME}.
+        Delete your account from {process.env.NEXT_PUBLIC_SITE_NAME}.
       </Text>
       <Text
         {...label("password")}

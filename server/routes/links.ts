@@ -22,7 +22,7 @@ router.post(
   "/",
   cors(),
   asyncHandler(auth.apikey),
-  asyncHandler(env.DISALLOW_ANONYMOUS_LINKS ? auth.jwt : auth.jwtLoose),
+  asyncHandler(env.NEXT_PUBLIC_DISALLOW_ANONYMOUS_LINKS ? auth.jwt : auth.jwtLoose),
   asyncHandler(auth.recaptcha),
   asyncHandler(auth.cooldown),
   validators.createLink,

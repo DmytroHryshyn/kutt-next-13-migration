@@ -179,7 +179,7 @@ export const report: Handler = async (req, res) => {
 
   const mail = await transporter.sendMail({
     from: env.MAIL_FROM || env.MAIL_USER,
-    to: env.REPORT_EMAIL,
+    to: env.NEXT_PUBLIC_REPORT_EMAIL,
     subject: "[REPORT]",
     text: link,
     html: link
@@ -267,7 +267,7 @@ export const redirect = (app: ReturnType<typeof next>): Handler => async (
   // 1. If custom domain, get domain info
   const host = utils.removeWww(req.headers.host);
   const domain =
-    host !== env.DEFAULT_DOMAIN
+    host !== env.NEXT_PUBLIC_DEFAULT_DOMAIN
       ? await query.domain.find({ address: host })
       : null;
 
@@ -349,7 +349,7 @@ export const redirectCustomDomain: Handler = async (req, res, next) => {
   const { path } = req;
   const host = utils.removeWww(req.headers.host);
 
-  if (host === env.DEFAULT_DOMAIN) {
+  if (host === env.NEXT_PUBLIC_DEFAULT_DOMAIN) {
     return next();
   }
 
@@ -362,7 +362,7 @@ export const redirectCustomDomain: Handler = async (req, res, next) => {
     const domain = await query.domain.find({ address: host });
     const redirectURL = domain
       ? domain.homepage
-      : `https://${env.DEFAULT_DOMAIN + path}`;
+      : `https://${env.NEXT_PUBLIC_DEFAULT_DOMAIN + path}`;
 
     return res.redirect(302, redirectURL);
   }

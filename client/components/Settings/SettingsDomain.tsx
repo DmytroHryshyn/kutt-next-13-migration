@@ -2,7 +2,6 @@ import { useFormState } from "react-use-form-state";
 import { Flex } from "rebass/styled-components";
 import React, { FC, useState } from "react";
 import styled from "styled-components";
-import getConfig from "next/config";
 
 import { useStoreState, useStoreActions } from "../../store";
 import { Domain } from "../../store/settings";
@@ -17,7 +16,6 @@ import Table from "../Table";
 import Modal from "../Modal";
 import Icon from "../Icon";
 
-const { publicRuntimeConfig } = getConfig();
 
 const Th = styled(Flex).attrs({ as: "th", py: 3, px: 3 })`
   font-size: 15px;
@@ -74,7 +72,7 @@ const SettingsDomain: FC = () => {
       </H2>
       <Text mb={3}>
         You can set a custom domain for your short URLs, so instead of{" "}
-        <b>{publicRuntimeConfig.DEFAULT_DOMAIN}/shorturl</b> you can have{" "}
+        <b>{process.env.NEXT_PUBLIC_DEFAULT_DOMAIN}/shorturl</b> you can have{" "}
         <b>example.com/shorturl.</b>
       </Text>
       <Text mb={4}>
@@ -95,7 +93,7 @@ const SettingsDomain: FC = () => {
               <tr key={d.address}>
                 <Td width={2 / 5}>{d.address}</Td>
                 <Td width={2 / 5}>
-                  {d.homepage || publicRuntimeConfig.DEFAULT_DOMAIN}
+                  {d.homepage || process.env.NEXT_PUBLIC_DEFAULT_DOMAIN}
                 </Td>
                 <Td width={1 / 5} justifyContent="center">
                   <Icon

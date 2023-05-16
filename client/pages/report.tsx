@@ -12,10 +12,6 @@ import Icon from "../components/Icon";
 import { useMessage } from "../hooks";
 import { APIv2 } from "../consts";
 
-import getConfig from "next/config";
-
-const { publicRuntimeConfig } = getConfig();
-
 const ReportPage = () => {
   const [formState, { text }] = useFormState<{ url: string }>();
   const [loading, setLoading] = useState(false);
@@ -47,7 +43,7 @@ const ReportPage = () => {
           or use the form. We will take actions shortly.
         </Text>
         <Text mb={4}>
-          {(publicRuntimeConfig.REPORT_EMAIL || "").replace("@", "[at]")}
+          {(process.env.NEXT_PUBLIC_REPORT_EMAIL || "").replace("@", "[at]")}
         </Text>
         <Text mb={3}>
           <Span bold>URL containing malware/scam:</Span>
@@ -61,7 +57,7 @@ const ReportPage = () => {
         >
           <TextInput
             {...text("url")}
-            placeholder={`${publicRuntimeConfig.DEFAULT_DOMAIN}/example`}
+            placeholder={`${process.env.NEXT_PUBLIC_DEFAULT_DOMAIN}/example`}
             height={[44, 54]}
             width={[1, 1 / 2]}
             flex="0 0 auto"

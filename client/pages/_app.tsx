@@ -1,6 +1,5 @@
 import App, { AppContext } from "next/app";
 import { StoreProvider } from "easy-peasy";
-import getConfig from "next/config";
 // import Router from "next/router";
 import decode from "jwt-decode";
 import cookie from "js-cookie";
@@ -10,7 +9,6 @@ import React from "react";
 import { initializeStore } from "../store";
 import { TokenPayload } from "../types";
 
-const { publicRuntimeConfig } = getConfig();
 
 // TODO: types
 class MyApp extends App<any> {
@@ -70,7 +68,7 @@ class MyApp extends App<any> {
       <>
         <Head>
           <title>
-            {publicRuntimeConfig.SITE_NAME} | Modern Open Source URL shortener.
+            {process.env.NEXT_PUBLIC_SITE_NAME} | Modern Open Source URL shortener.
           </title>
         </Head>
         <StoreProvider store={this.store}>

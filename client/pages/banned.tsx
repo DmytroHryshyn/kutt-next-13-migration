@@ -1,4 +1,3 @@
-import getConfig from "next/config";
 import React from "react";
 
 import AppWrapper from "../components/AppWrapper";
@@ -7,7 +6,6 @@ import Footer from "../components/Footer";
 import ALink from "../components/ALink";
 import { Col } from "../components/Layout";
 
-const { publicRuntimeConfig } = getConfig();
 
 const BannedPage = () => {
   return (
@@ -22,7 +20,7 @@ const BannedPage = () => {
         </H2>
         <H4 textAlign="center" normal>
           If you noticed a malware/scam link shortened by{" "}
-          {publicRuntimeConfig.SITE_NAME},{" "}
+          {process.env.NEXT_PUBLIC_SITE_NAME},{" "}
           <ALink href="/report" title="Send report" isNextLink>
             send us a report
           </ALink>

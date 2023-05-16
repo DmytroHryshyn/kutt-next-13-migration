@@ -5,7 +5,6 @@ import { useFormState } from "react-use-form-state";
 import { Flex } from "rebass/styled-components";
 import styled, { css } from "styled-components";
 import { ifProp } from "styled-tools";
-import getConfig from "next/config";
 import QRCode from "qrcode.react";
 import differenceInMilliseconds from "date-fns/differenceInMilliseconds";
 import ms from "ms";
@@ -25,8 +24,6 @@ import Table from "./Table";
 import ALink from "./ALink";
 import Modal from "./Modal";
 import Icon from "./Icon";
-
-const { publicRuntimeConfig } = getConfig();
 
 const Tr = styled(Flex).attrs({ as: "tr", px: [12, 12, 2] })``;
 const Th = styled(Flex)``;
@@ -368,7 +365,7 @@ const Row: FC<RowProps> = ({ index, link, setDeleteModal }) => {
                   fontSize={[14, 15]}
                   bold
                 >
-                  {link.domain || publicRuntimeConfig.DEFAULT_DOMAIN}/
+                  {link.domain || process.env.NEXT_PUBLIC_DEFAULT_DOMAIN}/
                 </Text>
                 <Flex as="form">
                   <TextInput

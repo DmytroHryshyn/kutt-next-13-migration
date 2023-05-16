@@ -3,7 +3,6 @@ import { useFormState } from "react-use-form-state";
 import { Flex } from "rebass/styled-components";
 import React, { useState } from "react";
 import styled from "styled-components";
-import getConfig from "next/config";
 
 import { useStoreActions, useStoreState } from "../store";
 import { Checkbox, Select, TextInput } from "./Input";
@@ -15,8 +14,6 @@ import { Link } from "../store/links";
 import Animation from "./Animation";
 import { Colors } from "../consts";
 import Icon from "./Icon";
-
-const { publicRuntimeConfig } = getConfig();
 
 const SubmitIconWrapper = styled.div`
   content: "";
@@ -59,7 +56,7 @@ interface Form {
   showAdvanced?: boolean;
 }
 
-const defaultDomain = publicRuntimeConfig.DEFAULT_DOMAIN;
+const defaultDomain = process.env.NEXT_PUBLIC_DEFAULT_DOMAIN;
 
 const Shortener = () => {
   const { isAuthenticated } = useStoreState((s) => s.auth);
@@ -104,7 +101,7 @@ const Shortener = () => {
 
     if (
       process.env.NODE_ENV === "production" &&
-      !!publicRuntimeConfig.RECAPTCHA_SITE_KEY &&
+      !!process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY &&
       !isAuthenticated
     ) {
       window.grecaptcha.execute(window.captchaId);

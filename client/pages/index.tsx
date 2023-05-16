@@ -1,7 +1,7 @@
 import React from "react";
 import { useRouter } from 'next/navigation';
 
-import { DISALLOW_ANONYMOUS_LINKS } from "../consts";
+import { NEXT_PUBLIC_DISALLOW_ANONYMOUS_LINKS } from "../consts";
 import NeedToLogin from "../components/NeedToLogin";
 import Extensions from "../components/Extensions";
 import LinksTable from "../components/LinksTable";
@@ -17,7 +17,7 @@ const Homepage = () => {
 
   if (
     !isAuthenticated &&
-    DISALLOW_ANONYMOUS_LINKS &&
+    NEXT_PUBLIC_DISALLOW_ANONYMOUS_LINKS &&
     typeof window !== "undefined"
   ) {
     router.push("/login");
