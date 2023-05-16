@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import { switchProp, ifNotProp, ifProp } from "styled-tools";
 import { Box, BoxProps } from "rebass/styled-components";

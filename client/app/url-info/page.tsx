@@ -1,9 +1,11 @@
+'use client'
 import { useSearchParams } from "next/navigation";
 import React from "react";
-import AppWrapper from "../components/AppWrapper";
-import Footer from "../components/Footer";
-import { H2, H4 } from "../components/Text";
-import { Col } from "../components/Layout";
+import AppWrapper from "../../components/AppWrapper";
+import Footer from "../../components/Footer";
+import { H2, H4 } from "../../components/Text";
+import { Col } from "../../components/Layout";
+
 const UrlInfoPage = () => {
   const searchParams = useSearchParams();
   return (
