@@ -1,18 +1,19 @@
+'use client'
 import { Flex } from "rebass/styled-components";
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import decode from "jwt-decode";
 import cookie from "js-cookie";
 
-import AppWrapper from "../components/AppWrapper";
-import { Button } from "../components/Button";
-import { useStoreActions } from "../store";
-import { Col } from "../components/Layout";
-import { TokenPayload } from "../types";
-import Icon from "../components/Icon";
+import AppWrapper from "../../components/AppWrapper";
+import { Button } from "../../components/Button";
+import { useStoreActions } from "../../store";
+import { Col } from "../../components/Layout";
+import { TokenPayload } from "../../types";
+import Icon from "../../components/Icon";
 import { NextPage } from "next";
-import { Colors } from "../consts";
-import ALink from "../components/ALink";
+import { Colors } from "../../consts";
+import ALink from "../../components/ALink";
 
 interface Props {
   token?: string;
