@@ -1,7 +1,7 @@
 import React from "react";
 
-import AppWrapper from "../components/AppWrapper";
-import { Col } from "../components/Layout";
+import AppWrapper from "../../components/AppWrapper";
+import { Col } from "../../components/Layout";
 
 const TermsPage = () => (
   <AppWrapper>
