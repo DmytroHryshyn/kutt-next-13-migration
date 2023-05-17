@@ -1,10 +1,10 @@
 import React from "react";
 
-import AppWrapper from "../components/AppWrapper";
-import { H2, H4, Span } from "../components/Text";
-import Footer from "../components/Footer";
-import ALink from "../components/ALink";
-import { Col } from "../components/Layout";
+import AppWrapper from "../../components/AppWrapper";
+import { H2, H4, Span } from "../../components/Text";
+import Footer from "../../components/Footer";
+import ALink from "../../components/ALink";
+import { Col } from "../../components/Layout";
 
 
 const BannedPage = () => {

@@ -1,3 +1,4 @@
+'use client'
 import { FC } from "react";
 import { Box, BoxProps } from "rebass/styled-components";
 import styled, { css } from "styled-components";
