@@ -1,21 +1,22 @@
+'use client'
 import { Box, Flex } from "rebass/styled-components";
 import React, { useState, useEffect } from "react";
 import formatDate from "date-fns/format";
 import { NextPage } from "next";
 import axios from "axios";
 
-import Text, { H1, H2, H4, Span } from "../components/Text";
-import { getAxiosConfig, removeProtocol } from "../utils";
-import { Button, NavButton } from "../components/Button";
-import { Col, RowCenterV } from "../components/Layout";
-import { Area, Bar, Pie, Map } from "../components/Charts";
-import PageLoading from "../components/PageLoading";
-import AppWrapper from "../components/AppWrapper";
-import Divider from "../components/Divider";
-import { APIv2, Colors } from "../consts";
-import { useStoreState } from "../store";
-import ALink from "../components/ALink";
-import Icon from "../components/Icon";
+import Text, { H1, H2, H4, Span } from "../../components/Text";
+import { getAxiosConfig, removeProtocol } from "../../utils";
+import { Button, NavButton } from "../../components/Button";
+import { Col, RowCenterV } from "../../components/Layout";
+import { Area, Bar, Pie, Map } from "../../components/Charts";
+import PageLoading from "../../components/PageLoading";
+import AppWrapper from "../../components/AppWrapper";
+import Divider from "../../components/Divider";
+import { APIv2, Colors } from "../../consts";
+import { useStoreState } from "../../store";
+import ALink from "../../components/ALink";
+import Icon from "../../components/Icon";
 
 interface Props {
   id?: string;
