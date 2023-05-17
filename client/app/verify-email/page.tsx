@@ -1,16 +1,17 @@
+'use client'
 import React, { useEffect } from "react";
 import { Flex } from "rebass/styled-components";
 import decode from "jwt-decode";
 import { NextPage } from "next";
 import cookie from "js-cookie";
 
-import { useStoreActions } from "../store";
-import AppWrapper from "../components/AppWrapper";
-import { H2 } from "../components/Text";
-import { TokenPayload } from "../types";
-import Icon from "../components/Icon";
-import { Colors } from "../consts";
-import Footer from "../components/Footer";
+import { useStoreActions } from "../../store";
+import AppWrapper from "../../components/AppWrapper";
+import { H2 } from "../../components/Text";
+import { TokenPayload } from "../../types";
+import Icon from "../../components/Icon";
+import { Colors } from "../../consts";
+import Footer from "../../components/Footer";
 
 interface Props {
   token?: string;
