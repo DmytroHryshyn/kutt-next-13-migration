@@ -1,3 +1,4 @@
+'use client'
 import { useFormState } from "react-use-form-state";
 import { Flex } from "rebass/styled-components";
 import React, { useState } from "react";
@@ -5,13 +6,13 @@ import { NextPage } from "next";
 import { useSearchParams } from "next/navigation";
 import axios from "axios";
 
-import AppWrapper from "../../components/AppWrapper";
-import { TextInput } from "../../components/Input";
-import { Button } from "../../components/Button";
-import Text, { H2 } from "../../components/Text";
-import { Col } from "../../components/Layout";
-import Icon from "../../components/Icon";
-import { APIv2 } from "../../consts";
+import AppWrapper from "../../../components/AppWrapper";
+import { TextInput } from "../../../components/Input";
+import { Button } from "../../../components/Button";
+import Text, { H2 } from "../../../components/Text";
+import { Col } from "../../../components/Layout";
+import Icon from "../../../components/Icon";
+import { APIv2 } from "../../../consts";
 
 interface Props {
   protectedLink?: string;
