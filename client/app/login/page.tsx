@@ -1,3 +1,4 @@
+'use client'
 import { useFormState } from "react-use-form-state";
 import React, { useEffect, useState } from "react";
 import { Flex } from "rebass/styled-components";
@@ -6,16 +7,16 @@ import styled from "styled-components";
 import { useRouter } from 'next/navigation';
 import axios from "axios";
 
-import { useStoreState, useStoreActions } from "../store";
-import { APIv2, NEXT_PUBLIC_DISALLOW_REGISTRATION } from "../consts";
-import { ColCenterV } from "../components/Layout";
-import AppWrapper from "../components/AppWrapper";
-import { TextInput } from "../components/Input";
-import { fadeIn } from "../helpers/animations";
-import { Button } from "../components/Button";
-import Text, { H2 } from "../components/Text";
-import ALink from "../components/ALink";
-import Icon from "../components/Icon";
+import { useStoreState, useStoreActions } from "../../store";
+import { APIv2, NEXT_PUBLIC_DISALLOW_REGISTRATION } from "../../consts";
+import { ColCenterV } from "../../components/Layout";
+import AppWrapper from "../../components/AppWrapper";
+import { TextInput } from "../../components/Input";
+import { fadeIn } from "../../helpers/animations";
+import { Button } from "../../components/Button";
+import Text, { H2 } from "../../components/Text";
+import ALink from "../../components/ALink";
+import Icon from "../../components/Icon";
 
 const LoginForm = styled(Flex).attrs({
   as: "form",
