@@ -1,3 +1,4 @@
+'use client'
 import { useFormState } from "react-use-form-state";
 import React, { useEffect, useState } from "react";
 import { Flex } from "rebass/styled-components";
@@ -7,16 +8,16 @@ import { NextPage } from "next";
 import cookie from "js-cookie";
 import axios from "axios";
 
-import { useStoreState, useStoreActions } from "../store";
-import AppWrapper from "../components/AppWrapper";
-import { TextInput } from "../components/Input";
-import { Button } from "../components/Button";
-import Text, { H2 } from "../components/Text";
-import { Col } from "../components/Layout";
-import { TokenPayload } from "../types";
-import { useMessage } from "../hooks";
-import Icon from "../components/Icon";
-import { APIv2 } from "../consts";
+import { useStoreState, useStoreActions } from "../../store";
+import AppWrapper from "../../components/AppWrapper";
+import { TextInput } from "../../components/Input";
+import { Button } from "../../components/Button";
+import Text, { H2 } from "../../components/Text";
+import { Col } from "../../components/Layout";
+import { TokenPayload } from "../../types";
+import { useMessage } from "../../hooks";
+import Icon from "../../components/Icon";
+import { APIv2 } from "../../consts";
 
 interface Props {
   token?: string;
